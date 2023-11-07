@@ -31,4 +31,33 @@ export default {
 }
 </script>
 
+<style>
+  .home {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .home h3 {
+    display: inline-block;
+    position: relative;
+    font-size: 26px;
+    color: white;
+    margin-bottom: 10px;
+    max-width: 400px;
+  }
+  .home h3::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #ff8800;
+    position: absolute;
+    z-index: -1;
+    padding-right: 40px;
+    left: -30px;
+    transform: rotateZ(-1deg);
+  }
+</style>
+
 
