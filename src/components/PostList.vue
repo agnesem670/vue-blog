@@ -12,20 +12,7 @@ import { onMounted, onUnmounted, onUpdated } from 'vue'
 
 export default {
     props: ['posts'],
-    components: {SinglePost},
-    setup(props) {
-        onMounted(() => {
-            console.log('componen mounted')
-        })
-        onUnmounted(() => {
-            console.log ('component unmounted')
-        })
-
-        onUpdated (() => {
-            console.log ('component updated')
-        })
-    },
-    components: { SinglePost }
+    components: {SinglePost}
 }
 </script>
 

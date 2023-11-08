@@ -2,7 +2,7 @@
   <div class="home">
     <h1>Home</h1>
     <div v-if="error">{{ error }}</div>
-    <div v-if="posts.length">
+    <div v-if="posts.length" class="layout">
       <PostList :posts="posts" />
       <TagCloud :posts="posts"/>
     </div>
@@ -40,26 +40,13 @@ export default {
     padding: 10px;
   }
 
-  .home h3 {
-    display: inline-block;
-    position: relative;
-    font-size: 26px;
-    color: white;
-    margin-bottom: 10px;
-    max-width: 400px;
+  .layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
   }
-  .home h3::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: #ff8800;
-    position: absolute;
-    z-index: -1;
-    padding-right: 40px;
-    left: -30px;
-    transform: rotateZ(-1deg);
-  }
+
+
 </style>
 
 
