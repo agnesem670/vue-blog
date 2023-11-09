@@ -1,6 +1,6 @@
 import { ref } from 'vue'
-import { projectFirestore } from '@/firebase/config.js';
-import { collection, getDocs } from "firebase/firestore"
+import { colRef } from '@/firebase/config.js';
+import { getDocs } from "firebase/firestore"
 
 const getPosts = () => {
     const posts = ref([]);
@@ -8,12 +8,9 @@ const getPosts = () => {
 
     const load = async () => {
         try {
-            const res = await getDocs(collection(projectFirestore, "posts"))
-            //console.log(res.docs)
-
-            posts.value = res.docs.map(doc => {
-                //console.log(doc.data())
-                return {...doc.data(), id: doc.id}
+            const querySnapshot = await getDocs(colRef)
+            querySnapshot.forEach((doc) => {
+                posts.value.push({...doc.data(), id: doc.id})
             })
         }
         catch (err) {
