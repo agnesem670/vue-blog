@@ -10,6 +10,11 @@ const getPost = (id) => {
         try {
             const docRef = doc(colRef, id)
             const docSnap = await getDoc(docRef)
+            console.log(docSnap)
+
+            if(!docSnap.exists()) {
+                throw Error('That post does not exist')
+            }
             post.value = { ...docSnap.data(), id: docSnap.id}
         }
         catch (err) {
