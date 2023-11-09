@@ -20,8 +20,11 @@
 </template>
 
 <script>
+import { doc, setDoc } from "firebase/firestore"
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+
+import { colRef } from '@/firebase/config.js';
 
 export default {
     setup() {
@@ -47,12 +50,8 @@ export default {
             tags: tags.value
           }
 
-          await fetch('http://localhost:3000/posts', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(post)
-          })
-
+          await setDoc(doc(colRef), post)
+    
           router.push({name: 'home'})
         }
 
