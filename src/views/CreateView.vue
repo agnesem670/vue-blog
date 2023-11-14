@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { doc, setDoc } from "firebase/firestore"
+import { doc, setDoc, serverTimestamp } from "firebase/firestore"
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -47,7 +47,8 @@ export default {
           const post = {
             title: title.value,
             body: body.value,
-            tags: tags.value
+            tags: tags.value,
+            createdAt: serverTimestamp()
           }
 
           await setDoc(doc(colRef), post)
